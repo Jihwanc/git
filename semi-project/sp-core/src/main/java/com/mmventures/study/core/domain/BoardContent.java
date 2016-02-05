@@ -23,6 +23,8 @@ public class BoardContent {
     private int categoryId;
     /** User id. */
     private int userId;
+    /** Subject. */
+    private String subject;
     /** Content. */
     private String content;
     /** Is notice content. */
@@ -74,6 +76,14 @@ public class BoardContent {
 	this.userId = userId;
     }
 
+    public String getSubject() {
+	return subject;
+    }
+
+    public void setSubject(String subject) {
+	this.subject = subject;
+    }
+
     public String getContent() {
 	return content;
     }
@@ -105,11 +115,11 @@ public class BoardContent {
     public void setPassword(String password) {
 	this.password = password;
     }
-    
+
     public CommonField getCommonField() {
 	return commonField;
     }
-    
+
     public void setCommonField(CommonField commonField) {
 	this.commonField = commonField;
     }

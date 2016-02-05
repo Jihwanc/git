@@ -28,10 +28,11 @@
 		<authentication-provider>
 			<user-service>
 				<user name="o2wow" password="1234" authorities="ROLE_USER"/>
-				<user name="admin1" password="1234" authorities="ROLE_ADMIN"/>
+				<user name="admin1" password="admin" authorities="ROLE_ADMIN"/>
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+
 
 	
 		

@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>Login Page</title>
+
 <jsp:include page="include/isInclude.jsp"></jsp:include>
 <script type="text/javascript">
 $(document).ready(function (){
@@ -13,6 +14,7 @@ $(document).ready(function (){
 			alert("로그인 아이디를 입력해주세요");
 			$("#loginid").focus();
 		}else if($("#loginpwd").val() == ""){
+			// check validation 
 			alert("로그인 비밀번호를 입력해주세요");
 			$("#loginpwd").focus();
 		}else{

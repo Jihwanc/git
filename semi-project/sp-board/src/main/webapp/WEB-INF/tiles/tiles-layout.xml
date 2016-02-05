@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- user view. -->
+	<definition name="user-layout" template="/WEB-INF/views/layout/user_template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+
+	<definition name="*.user" extends="user-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	<definition name="*/*.user" extends="user-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*.user" extends="user-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+	<!-- admin view. -->
+	<definition name="admin-layout" template="/WEB-INF/views/layout/admin_template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="admin-menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+
+	<definition name="*.admin" extends="admin-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	<definition name="*/*.admin" extends="admin-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*.admin" extends="admin-layout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+	<!-- no tiles. origin page view. -->
+	<definition name="origin" template="/WEB-INF/views/layout/origin.jsp">
+		<put-attribute name="origin" value="" />
+	</definition>
+
+	<definition name="*" extends="origin">
+		<put-attribute name="origin" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	<definition name="*/*" extends="origin">
+		<put-attribute name="origin" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	<definition name="*/*/*" extends="origin">
+		<put-attribute name="origin" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+</tiles-definitions>
