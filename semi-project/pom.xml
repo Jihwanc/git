@@ -267,6 +267,11 @@
 				<artifactId>tiles-request-servlet</artifactId>
 				<version>${org.apache.tiles.request.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.tiles</groupId>
+				<artifactId>tiles-extras</artifactId>
+				<version>${org.apache.tiles.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>commons-digester</groupId>

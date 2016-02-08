@@ -1,4 +1,4 @@
-package com.mmventures.study.board.security.handler;
+package com.mmventures.study.security.handler;
 
 public class MemberAuthenticationFailureHandler {
 

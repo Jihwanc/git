@@ -1,4 +1,4 @@
-package com.mmventures.study.board.security.controller;
+package com.mmventures.study.security.controller;
 
 import java.util.Locale;
 

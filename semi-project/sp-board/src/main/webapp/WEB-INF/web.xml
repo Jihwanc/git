@@ -8,7 +8,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/root-context.xml
-			/WEB-INF/spring/spring-security.xml
+			/WEB-INF/spring/application-context.xml
 		</param-value>
 	</context-param>
 
@@ -33,7 +33,28 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Register spring security filter 20160204_이희창 -->
+	<filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+    	</filter-class>
+    	<init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+	        <param-name>forceEncoding</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	</filter>
+	
+	<filter-mapping>
+	        <filter-name>encodingFilter</filter-name>
+	        <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	<!-- Register spring security filter 20160204_이희창 
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -43,7 +64,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+	-->
 	<!-- 20160204_이희창-->
 
 	

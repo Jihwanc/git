@@ -43,7 +43,7 @@ $(document).ready(function (){
     	<tr>
     		<td>Password</td>
     		<td>
-    			<input type="text" id="loginpwd" name="loginpwd" value="${loginpwd}" />
+    			<input type="password" id="loginpwd" name="loginpwd" value="${loginpwd}" />
     		</td>
     	</tr>
     	<c:if test="${not empty securityexceptionmsg}">

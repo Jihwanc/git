@@ -24,19 +24,32 @@
 
 	<!-- Component scan -->
 	<context:component-scan base-package="com.mmventures.study">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" 
+		expression="org.springframework.stereotype.Controller" /> 
+			
 	</context:component-scan>
 
 
+	<!-- freemarker config <beans:bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"> 
+		<beans:property name="templateLoaderPath" value="/WEB-INF/views/ftl/" /> 
+		<beans:property name="defaultEncoding" value="UTF-8" /> <beans:property name="freemarkerSettings"> 
+		<beans:props> <beans:prop key="number_format">0.####</beans:prop> </beans:props> 
+		</beans:property> </beans:bean> -->
+
+	<!-- FreeMarker view resolver <beans:bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"> 
+		<beans:property name="cache" value="true" /> <beans:property name="prefix" 
+		value="" /> <beans:property name="suffix" value=".ftl" /> <beans:property 
+		name="order" value="1" /> </beans:bean> -->
+
+
 	<!-- Tiles3 view resolver -->
+	<!-- 
 	<beans:bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<beans:property name="order" value="2" />
 	</beans:bean>
-
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
@@ -44,20 +57,6 @@
 				<beans:value>/WEB-INF/tiles/tiles-layout.xml</beans:value>
 			</beans:list>
 		</beans:property>
-	</beans:bean>
-
-	<!-- FreeMarker view resolver
-	<beans:bean id="freeMarkerViewResolver"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-		<beans:property name="cache" value="true" />
-		<beans:property name="prefix" value="" />
-		<beans:property name="suffix" value=".ftl" />
-		
-		<beans:property name="exposeSpringMacroHelpers" value="true" />
-		<beans:property name="exposeRequestAttributes" value="true" />
-		<beans:property name="exposeSessionAttributes" value="true" />
-		
-		<beans:property name="order" value="1" />
 	</beans:bean>
 	 -->
 
