@@ -1,95 +1,139 @@
 package com.mmventures.study.board.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mmventures.study.board.service.BoardContentService;
 import com.mmventures.study.board.service.BoardInfoService;
+import com.mmventures.study.core.domain.BoardContent;
+import com.mmventures.study.core.domain.CommonField;
+import com.mmventures.study.core.domain.ContentComment;
+import com.mmventures.study.core.domain.UserInfo;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
-public class BoardController {	
-	
+@RequestMapping(value = "/board")
+public class BoardController {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     /** BoardContent service. */
     @Autowired
     private BoardContentService boardContentService;
+    
     /** Board service. */
     @Autowired
-    private BoardInfoService boardService;
+    private BoardInfoService boardInfoService;
 
     /** Logger. */
     private static final Logger LOGGER = LoggerFactory
 	    .getLogger(BoardController.class);
-        
-    /**
-     * 임시 테스트용.
-     * 
-     * @param locale
-     *            Locale
-     * @param model
-     *            dataModel
-     * @return jsp url
-     */
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public final String home(final Locale locale, final Model model) {
-//	LOGGER.info("Welcome home! The client locale is {}.", locale);
-//
-//	Date date = new Date();
-//	DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-//		DateFormat.LONG, locale);
-//
-//	String formattedDate = dateFormat.format(date);
-//
-//	model.addAttribute("serverTime", formattedDate);
-//
-//	return "home";
-//    }
-//    
 
-    /**
-     * Hibernate test.
-     * 
-     * @param model
-     *            model
-     * @return view
-     */
-    @RequestMapping(value = "/ht", method = RequestMethod.GET)
-    public final String hibernateTest(final Model model) {
-	LOGGER.debug("HibernateTEst DEBUG LOG.");
-	LOGGER.info("HibernateTest INFO LOG.");
+    @RequestMapping(value = "/list.do", method = RequestMethod.GET)
+    public final String contentList(
+	    @RequestParam final int boardId,
+//	    @RequestParam(required=false) final int page,
+//	    @RequestParam(required=false) final int size,
+//	    @RequestParam(required=false) final int category,
+//	    @RequestParam(required=false) final String search,
+	    final Model model) {
 	
-	boardContentService.writeBoardContent();
-
-	return "test";
+    	boardContentService.contentList(model, boardId, 0, 10, 0, "");
+	
+	return "board/list";
     }
-    
-    /**
-     * Hibernate test.
-     * 
-     * @param model
-     *            model
-     * @return view
-     */
-    @RequestMapping(value = "/ht2", method = RequestMethod.GET)
-    public final String hibernateTest2(final Model model) {
-	boardService.createBoardInfo();
 
-	return "test";
+    @RequestMapping(value = "/view.do", method = RequestMethod.GET)
+    public final String viewContent(
+	    @RequestParam final int boardId,
+	    @RequestParam final int contentId,
+	    final Model model) {
+	
+	boardContentService.contentDetail(model, boardId, contentId);
+		
+	
+	return "board/view";
     }
-    
-    
 
+    @RequestMapping(value = "/write.do", method = RequestMethod.GET)
+    public final String writeContentForm(
+	    @RequestParam final int boardId,
+	    final Model model) {
+	
+	boardContentService.writeContentForm(model, boardId);
+	
+	return "board/write";
+    }
+
+    @RequestMapping(value = "/writeSubmit.do", method = RequestMethod.POST)
+    public final String writeContent(
+	    @ModelAttribute BoardContent boardContent,
+	    final Model model) {
+	
+	System.out.println("# writeSubmit.do");
+	System.out.println("# " + boardContent);
+	
+	boardContentService.writeBoardContent(model, boardContent);
+	
+	return "redirect:list";
+    }
+
+    @RequestMapping(value = "/modify.do", method = RequestMethod.GET)
+    public final String modifyContentForm(final Model model) {
+	return null;
+    }
+
+    @RequestMapping(value = "/modifySubmit.do", method = RequestMethod.POST)
+    public final String modifyContent(final Model model) {
+	return null;
+    }
+
+    @RequestMapping(value = "/fildDownload.do", method = RequestMethod.GET)
+    public final String getFile(final Model model) {
+	return null;
+    }
+
+    @RequestMapping(value = "/writeComment.do", method = RequestMethod.POST)
+    public final String writeComment(
+	    @RequestParam final int boardId,
+	    @RequestParam final int contentId,
+	    @RequestParam final int parentCommentId,
+	    final Model model) {
+	
+	
+	
+	return null;
+    }
+
+    @RequestMapping(value = "/modifyComment.do", method = RequestMethod.POST)
+    public final String modifyComment(
+	    @ModelAttribute ContentComment comment,
+	    final Model model) {
+	
+	
+	
+	return null;
+    }
+
+    @RequestMapping(value = "/deleteComment.do", method = RequestMethod.POST)
+    public final String deleteComment(
+	    @RequestParam final int commentId,
+	    @ModelAttribute final UserInfo userInfo,
+	    final Model model) {
+	
+	
+	
+	return null;
+    }
 }
