@@ -22,7 +22,7 @@ public class MenuInfo {
     /** Menu url link. */
     private String url;
     /** Menu order. */
-    private int order;
+    private int menuOrder;
     /** Common field. */
     @Embedded
     private CommonField commonField;
@@ -57,15 +57,15 @@ public class MenuInfo {
     public void setUrl(String url) {
 	this.url = url;
     }
-
-    public int getOrder() {
-	return order;
+        
+    public int getMenuOrder() {
+        return menuOrder;
     }
 
-    public void setOrder(int order) {
-	this.order = order;
+    public void setMenuOrder(int menuOrder) {
+        this.menuOrder = menuOrder;
     }
-    
+
     public CommonField getCommonField() {
 	return commonField;
     }

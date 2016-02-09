@@ -2,7 +2,7 @@
 <!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-        
+
 <tiles-definitions>
 	<definition name="baseLayout" template="/WEB-INF/views/ftl/layout.ftl"
 		templateType="freemarker">
@@ -11,7 +11,14 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/jsp/footer.jsp" />
 	</definition>
-	<definition name="REGEXP:([^/].*)" extends="baseLayout">
+
+
+
+
+
+
+
+	<definition name="REGEXP:([^/].*).ftl" extends="baseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/ftl/{1}.ftl"
 			type="freemarker" />
 	</definition>

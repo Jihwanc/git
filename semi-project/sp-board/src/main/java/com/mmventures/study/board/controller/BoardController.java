@@ -44,7 +44,7 @@ public class BoardController {
 	
     	boardContentService.contentList(model, boardId, 0, 10, 0, "");
 	
-	return "board/list";
+	return "board/list.ftl";
     }
 
     @RequestMapping(value = "/view.do", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class BoardController {
 	boardContentService.contentDetail(model, boardId, contentId);
 		
 	
-	return "board/view";
+	return "board/view.ftl";
     }
 
     @RequestMapping(value = "/write.do", method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class BoardController {
 	
 	boardContentService.writeContentForm(model, boardId);
 	
-	return "board/write";
+	return "board/write.ftl";
     }
 
     @RequestMapping(value = "/writeSubmit.do", method = RequestMethod.POST)
