@@ -9,6 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>sp-board</artifactId>
+	<packaging>war</packaging>
 	<name>sp-board</name>
 	<dependencies>
 		<dependency>
