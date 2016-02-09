@@ -8,6 +8,7 @@ import org.apache.tiles.request.ApplicationContext;
 
 public class SpringCompleteAutoloadTilesContainerFactory
 	extends CompleteAutoloadTilesContainerFactory {
+	
     @Override
     protected LocaleResolver createLocaleResolver(
 	    ApplicationContext applicationContext) {

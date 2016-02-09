@@ -2,18 +2,14 @@ package com.mmventures.study.board.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mmventures.study.core.domain.BoardContent;
 import com.mmventures.study.core.domain.BoardInfo;
 import com.mmventures.study.core.domain.CommonData;
-import com.mmventures.study.core.domain.TableRelationInfo;
 
 /**
  * Board Info DAO.
@@ -36,7 +32,18 @@ public class BoardInfoDao {
     public void insertBoardInfo(BoardInfo boardInfo) {
 	Session session = sessionFactory.getCurrentSession();
 	session.save(boardInfo);
-	session.close();
+    }
+
+    public BoardInfo getBoardInfo(final int boardId) {
+	Session session = sessionFactory.getCurrentSession();
+
+	BoardInfo boardInfo = (BoardInfo) session
+		.createQuery(
+			"from BoardInfo as boardInfo where boardInfo.id = :boardId")
+		.setInteger("boardId", boardId)
+		.uniqueResult();
+	
+	return boardInfo;
     }
 
     public List<CommonData> getBoardCategoryList(int boardId) {

@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class ApplicationContextConfig {
     private final String DB_URL = "jdbc:mysql://localhost/sp";
     private final String DB_USER_NAME = "root";
-    private final String DB_USER_PASSWORD = "1234567890";
+    private final String DB_USER_PASSWORD = "";
     
     private final String[] PACKAGE_TARGET = {"com.mmventures.study.core.domain"};
 

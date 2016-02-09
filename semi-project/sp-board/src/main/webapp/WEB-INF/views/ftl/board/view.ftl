@@ -1,31 +1,40 @@
 <#ftl encoding='UTF-8'>
-<br>
 
+<br>
 <table id="writeTable">
 	<tr>
-		<td></td>
+		<td>작성자: </td>
 		<td>
-			작성자: ${content.userId}
+			${content.userId}
 		</td>
 	</tr>
+	<#if categoryMap?exists>
 	<tr>
 		<td>카테고리: </td>
-		<td>...</td>
+		<td></td>
 	</tr>
+	</#if>
 	<tr>
 		<td>제목: </td>
 		<td>${content.subject}</td>
 	</tr>
+	<#if content.link?exists>
 	<tr>
 		<td>링크: </td>
-		<td>...</td>
+		<td>${content.link}</td>
 	</tr>
+	</#if>
+	
+	<#if fileList?exists>
 	<tr>
 		<td>파일: </td>
 		<td>
-		...
+		<#list fileList as file>
+			${file},
+		</#list>
 		</td>
 	</tr>
+	</#if>
 	<tr>
 		<td>내용</td>
 		<td>
@@ -34,7 +43,7 @@
 			</div>
 		</td>
 	</tr>
-	<tr>0422
+	<tr>
 		<td colspan="2">
 			<hr>
 		</td>
@@ -53,8 +62,9 @@
 
 	<tr>
 		<td colspan="2">
-			<textarea id="comment" name="comment" rows="4" cols="80"></textarea>
-			<input type="button" id="commentWriteButton" name="commentWriteButton" value="코멘트 저장">
+			<textarea id="commentArea" name="commentArea" rows="4" cols="80"></textarea>
+			<input type="button" id="commentWriteButton" name="commentWriteButton" 
+				onclick="writeComment()" value="코멘트 저장">
 		</td>
 		
 	</tr>

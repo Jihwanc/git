@@ -2,7 +2,7 @@
 <br>
 <table name="boardContentList">
 	<tr>
-		<th>번호</th><th>제목</th><th>작성자</th><th>작성일</th>
+		<th>번호</th><th width="400px">제목</th><th>작성자</th><th>작성일</th>
 	</tr>
 	<#list contentList as content>
 		<tr>
