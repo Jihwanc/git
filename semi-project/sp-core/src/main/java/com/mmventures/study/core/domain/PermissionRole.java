@@ -85,4 +85,12 @@ public class PermissionRole {
 	this.commonField = commonField;
     }
 
+    @Override
+    public String toString() {
+	return "PermissionRole [id=" + id + ", permissionName=" + permissionName
+		+ ", permissionUrl=" + permissionUrl + ", permission="
+		+ permission + ", description=" + description + ", commonField="
+		+ commonField + "]";
+    }
+
 }

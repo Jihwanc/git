@@ -37,10 +37,9 @@ public class BoardInfo {
 
     /**
      * Category list. intValue: order varcharValue1: CategoryName
-     
-    @OneToMany
-    private List<CommonData> categoryList;
-    */
+     * 
+     * @OneToMany private List<CommonData> categoryList;
+     */
 
     /**
      * Default constructor.
@@ -112,12 +111,22 @@ public class BoardInfo {
     public void setSecretEnable(boolean secretEnable) {
 	this.secretEnable = secretEnable;
     }
-    
+
     public CommonField getCommonField() {
 	return commonField;
     }
-    
+
     public void setCommonField(CommonField commonField) {
 	this.commonField = commonField;
     }
+
+    @Override
+    public String toString() {
+	return "BoardInfo [id=" + id + ", title=" + title + ", url=" + url
+		+ ", categoryEnable=" + categoryEnable + ", listViewEnable="
+		+ listViewEnable + ", fileVolumeLimit=" + fileVolumeLimit
+		+ ", autoLinkEnable=" + autoLinkEnable + ", secretEnable="
+		+ secretEnable + ", commonField=" + commonField + "]";
+    }
+
 }

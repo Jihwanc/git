@@ -36,11 +36,11 @@ public class CommonData {
     }
 
     public int getId() {
-        return id;
+	return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+	this.id = id;
     }
 
     public int getCategory() {
@@ -74,13 +74,21 @@ public class CommonData {
     public void setVarcharValue2(String varcharValue2) {
 	this.varcharValue2 = varcharValue2;
     }
-    
+
     public CommonField getCommonField() {
 	return commonField;
     }
-    
+
     public void setCommonField(CommonField commonField) {
 	this.commonField = commonField;
+    }
+
+    @Override
+    public String toString() {
+	return "CommonData [id=" + id + ", category=" + category + ", intValue="
+		+ intValue + ", varcharValue1=" + varcharValue1
+		+ ", varcharValue2=" + varcharValue2 + ", commonField="
+		+ commonField + "]";
     }
 
 }

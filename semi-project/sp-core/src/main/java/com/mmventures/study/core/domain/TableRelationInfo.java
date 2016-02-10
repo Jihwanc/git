@@ -74,4 +74,11 @@ public class TableRelationInfo {
 	this.commonField = commonField;
     }
 
+    @Override
+    public String toString() {
+	return "TableRelationInfo [id=" + id + ", category=" + category
+		+ ", pk1=" + pk1 + ", pk2=" + pk2 + ", commonField="
+		+ commonField + "]";
+    }
+
 }

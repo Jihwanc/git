@@ -74,4 +74,11 @@ public class MenuInfo {
 	this.commonField = commonField;
     }
 
+    @Override
+    public String toString() {
+	return "MenuInfo [id=" + id + ", menuName=" + menuName + ", url=" + url
+		+ ", menuOrder=" + menuOrder + ", commonField=" + commonField
+		+ "]";
+    }
+
 }

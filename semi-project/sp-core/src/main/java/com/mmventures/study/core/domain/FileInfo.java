@@ -76,4 +76,11 @@ public class FileInfo {
 	this.fileSze = fileSze;
     }
 
+    @Override
+    public String toString() {
+	return "FileInfo [id=" + id + ", fileName=" + fileName + ", saveUrl="
+		+ saveUrl + ", downloadCount=" + downloadCount + ", fileSze="
+		+ fileSze + ", commonField=" + commonField + "]";
+    }
+
 }

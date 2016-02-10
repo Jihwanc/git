@@ -71,4 +71,11 @@ public class ContentComment {
 	this.commonField = commonField;
     }
 
+    @Override
+    public String toString() {
+	return "ContentComment [id=" + id + ", contentId=" + contentId
+		+ ", userId=" + userId + ", comment=" + comment
+		+ ", commonField=" + commonField + "]";
+    }
+
 }

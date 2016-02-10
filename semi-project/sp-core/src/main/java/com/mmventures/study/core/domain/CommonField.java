@@ -60,4 +60,11 @@ public class CommonField {
 	this.isDelete = isDelete;
     }
 
+    @Override
+    public String toString() {
+	return "CommonField [createDate=" + createDate + ", updateDate="
+		+ updateDate + ", modifier=" + modifier + ", isDelete="
+		+ isDelete + "]";
+    }
+
 }

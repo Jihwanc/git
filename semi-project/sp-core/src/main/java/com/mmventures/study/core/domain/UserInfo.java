@@ -104,4 +104,12 @@ public class UserInfo {
 	this.commonField = commonField;
     }
 
+    @Override
+    public String toString() {
+	return "UserInfo [id=" + id + ", email=" + email + ", nickName="
+		+ nickName + ", name=" + name + ", password=" + password
+		+ ", address=" + address + ", phoneNumber=" + phoneNumber
+		+ ", commonField=" + commonField + "]";
+    }
+
 }
