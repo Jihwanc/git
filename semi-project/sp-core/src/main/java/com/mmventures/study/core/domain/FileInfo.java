@@ -24,7 +24,7 @@ public class FileInfo {
     /** File download count. */
     private int downloadCount;
     /** File size. */
-    private int fileSze;
+    private int fileSize;
     /** Common field. */
     @Embedded
     private CommonField commonField;
@@ -68,19 +68,27 @@ public class FileInfo {
 	this.downloadCount = downloadCount;
     }
 
-    public int getFileSze() {
-	return fileSze;
+    public int getFileSize() {
+	return fileSize;
     }
 
-    public void setFileSze(int fileSze) {
-	this.fileSze = fileSze;
+    public void setFileSize(int fileSize) {
+	this.fileSize = fileSize;
+    }
+
+    public CommonField getCommonField() {
+	return commonField;
+    }
+
+    public void setCommonField(CommonField commonField) {
+	this.commonField = commonField;
     }
 
     @Override
     public String toString() {
 	return "FileInfo [id=" + id + ", fileName=" + fileName + ", saveUrl="
-		+ saveUrl + ", downloadCount=" + downloadCount + ", fileSze="
-		+ fileSze + ", commonField=" + commonField + "]";
+		+ saveUrl + ", downloadCount=" + downloadCount + ", fileSize="
+		+ fileSize + ", commonField=" + commonField + "]";
     }
 
 }

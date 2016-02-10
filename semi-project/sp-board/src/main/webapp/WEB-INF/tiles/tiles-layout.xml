@@ -11,13 +11,6 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/jsp/footer.jsp" />
 	</definition>
-
-
-
-
-
-
-
 	<definition name="REGEXP:([^/].*).ftl" extends="baseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/ftl/{1}.ftl"
 			type="freemarker" />

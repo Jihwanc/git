@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>semi-project</title>
 <script type="text/javascript" 
-	src="../resources/jquery/js/jquery-1.12.0.min.js">
+	src="../resources/js/jquery/jquery-1.12.0.min.js">
 </script>
 <style type="text/css">
 body {

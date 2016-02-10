@@ -148,6 +148,17 @@
 			<artifactId>freemarker</artifactId>
 		</dependency>
 
+		<!-- commons file upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
 	</dependencies>
 	<!-- build config <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
 		<artifactId>maven-compiler-plugin</artifactId> <version>3.3</version> <configuration> 

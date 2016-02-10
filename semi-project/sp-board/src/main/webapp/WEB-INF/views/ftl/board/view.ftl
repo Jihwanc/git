@@ -5,13 +5,13 @@
 	<tr>
 		<td>작성자: </td>
 		<td>
-			${content.userId}
+			${Session.userInfo.nickName}
 		</td>
 	</tr>
-	<#if categoryMap?exists>
+	<#if category?exists>
 	<tr>
 		<td>카테고리: </td>
-		<td></td>
+		<td>${category.varcharValue1}</td>
 	</tr>
 	</#if>
 	<tr>
@@ -30,7 +30,9 @@
 		<td>파일: </td>
 		<td>
 		<#list fileList as file>
-			${file},
+			<a href="./fileDownload.do?id=${file.id}&file=${file.saveUrl}">
+			${file.fileName}
+			</a>
 		</#list>
 		</td>
 	</tr>
@@ -50,44 +52,78 @@
 	</tr>
 	<tr>
 		<td colspan="2">
+		<table>
 		<#list commentList as comment>
-			<table>
+			<tr>
 				<td width="400">${comment.comment}</td>
 				<td>${comment.userId}</td>
 				<td>${comment.commonField.createDate}</td>
-			</table>
+				<td><input type="button" id=${comment.id} 
+					class="commentDeleteButton" value="삭제"></td>
+			</tr>
 		</#list>
+		</table>
 		</td>
 	</tr>
 
 	<tr>
 		<td colspan="2">
-			<textarea id="commentArea" name="commentArea" rows="4" cols="80"></textarea>
-			<input type="button" id="commentWriteButton" name="commentWriteButton" 
-				onclick="writeComment()" value="코멘트 저장">
+			<form id="commentForm">
+			<input type="hidden" name="contentId" value=${content.id} />
+			<input type="hidden" name="userId" value=${Session.userInfo.id} />
+			
+			<textarea id="comment" name="comment" rows="4" cols="80"></textarea>
+			<input type="button" id="commentWriteButton" value="코멘트 저장">
+			
+			</form>
 		</td>
 		
 	</tr>
 	
 	<tr>
-		<td colspan="2">게시물 리스트</td>
+		<td colspan="2">
+		<a href="list.do?boardId=${boardId}">리스트</a>
+		</td>
 	</tr>
 </table>
 
-
-
-<script type="text/javascript">
-function writeComment() {
-
-
-}
-
-</script>
-
 <style type="text/css">
-
-.button {
-	margin: 10 auto;
+#contentDiv {
+	border: 1px solid gray;
+	height: 200px;
 }
 </style>
 
+<script type="text/javascript">
+$('#commentWriteButton').click(function() {
+	$.ajax({
+		url: './writeComment.do',
+		type: 'POST',
+		data:$('#commentForm').serialize(),
+		success:function(data){
+			alert("코멘트 등록 성공");
+			location.reload(true);
+		},
+		fail:function(data){
+			alert("코멘트 등록 실패");
+		}
+	})
+})
+
+$('.commentDeleteButton').click(function() {
+	var commentId = $(this).attr('id');
+
+	$.ajax({
+		url: './deleteComment.do',
+		type: 'POST',
+		data: {commentId : commentId},
+		success:function(data){
+			alert("코멘트 삭제 성공");
+			location.reload(true);
+		},
+		fail:function(data){
+			alert("코멘트 삭제 실패");
+		}
+	})
+})
+</script>

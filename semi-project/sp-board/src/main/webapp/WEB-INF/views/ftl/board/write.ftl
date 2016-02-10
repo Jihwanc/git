@@ -1,12 +1,17 @@
 <#ftl encoding='UTF-8'>
 <br>
-<form action="writeSubmit.do" method="post">
+<form action="writeSubmit.do" method="post" enctype="multipart/form-data">
 <table id="writeTable">
 	<tr>
-		<td></td>
+		<td>공지글: </td>
 		<td>
-			작성자: <input type="text" id="modifier" name="text">
-			공지글: <input type="checkbox" id="isNotice" name="isNotice">
+			<input type="checkbox" id="isNotice" name="isNotice">
+		</td>
+	</tr>
+	<tr>
+		<td>작성자: </td>
+		<td>
+			<input type="text" id="modifier" name="text">
 		</td>
 	</tr>
 	<tr>
@@ -30,22 +35,20 @@
 	<tr>
 		<td>파일: </td>
 		<td>
-			<input type="text" id="filePath" name="filePath">
-			<input type="file" id="fileSelector" name="fileSelector">
+			<input type="file" id="file" name="file">
 		</td>
 	</tr>
 	<tr>
-		<td></td>
+		<td>비밀글: </td>
 		<td>
-			비밀글: <input type="checkbox" id="isSecret" name="isSecret">
+			<input type="checkbox" id="isSecret" name="isSecret">
 			비밀번호: <input type="text" id="password" name="password">
 		</td>
 	</tr>
 	<tr>
 		<td>내용</td>
 		<td>
-			<textarea name="content" id="content" rows="10" cols="80">
-			</textarea>
+			<textarea name="content" id="content" rows="10" cols="80"></textarea>
 		</td>
 	</tr>
 	<tr>

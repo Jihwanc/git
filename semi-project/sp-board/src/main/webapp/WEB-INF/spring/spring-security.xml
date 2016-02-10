@@ -11,40 +11,43 @@
 	<!-- enable use-expressions -->
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
-		
 
 		<!-- access denied page -->
 		<access-denied-handler error-page="/403" />
-		<form-login 
-		    login-page="/login.do" 
-		    default-target-url="/welcome"
-			authentication-failure-url="/login?error" 
-			username-parameter="username"
+		<form-login login-page="/login.do" default-target-url="/welcome"
+			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" />
 		<logout logout-success-url="/login?logout" />
-		<!-- enable csrf protection -->
-		<csrf />
+		<!-- disable csrf protection -->
+		<csrf disabled="true"/>
+
+		<!-- Disable X-Frame-Options -->
+		<headers>
+			<frame-options policy="SAMEORIGIN" />
+		</headers>
 	</http>
 
-	
-									    
-	<beans:bean id="userInfoDao" class="com.mmventures.study.security.dao.SecurityUserInfoDao">
-		<beans:property name="sessionFactory" ref ="sessionFactory"></beans:property>
+
+
+	<beans:bean id="userInfoDao"
+		class="com.mmventures.study.security.dao.SecurityUserInfoDao">
+		<beans:property name="sessionFactory" ref="sessionFactory"></beans:property>
 	</beans:bean>
-	
-	
-	<beans:bean id="userInfoDetailsService" class="com.mmventures.study.security.service.UserInfoDetailsService">
-		<beans:property name="userInfoDao" ref ="userInfoDao"></beans:property>
+
+
+	<beans:bean id="userInfoDetailsService"
+		class="com.mmventures.study.security.service.UserInfoDetailsService">
+		<beans:property name="userInfoDao" ref="userInfoDao"></beans:property>
 	</beans:bean>
 
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="userInfoDetailsService" >
-<!-- 			<password-encoder hash="bcrypt" />    
- -->		</authentication-provider>
+		<authentication-provider user-service-ref="userInfoDetailsService">
+			<!-- <password-encoder hash="bcrypt" /> -->
+		</authentication-provider>
 	</authentication-manager>
 
-	
-	
+
+
 
 </beans:beans>

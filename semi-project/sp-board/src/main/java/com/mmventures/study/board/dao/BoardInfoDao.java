@@ -39,7 +39,9 @@ public class BoardInfoDao {
 
 	BoardInfo boardInfo = (BoardInfo) session
 		.createQuery(
-			"from BoardInfo as boardInfo where boardInfo.id = :boardId")
+			"from BoardInfo as boardInfo "
+			+ "where boardInfo.id = :boardId "
+			+ "and boardInfo.commonField.isDelete = false")
 		.setInteger("boardId", boardId)
 		.uniqueResult();
 	
@@ -51,14 +53,18 @@ public class BoardInfoDao {
 
 	Query relationQuery = session
 		.createQuery(
-			"select info.pk2 from TableRelationInfo as info where info.pk1 = :boardId")
+			"select info.pk2 from TableRelationInfo as info "
+			+ "where info.pk1 = :boardId "
+			+ "and info.commonField.isDelete = false")
 		.setParameter("boardId", boardId);
 
 	List<Integer> categoryRelationList = relationQuery.list();
 
 	Query categoryQuery = session
 		.createQuery(
-			"from CommonData as category where category.id IN (:relationList)")
+			"from CommonData as category "
+			+ "where category.commonField.isDelete = false "
+			+ "and category.id IN (:relationList)")
 		.setParameterList("relationList", categoryRelationList);
 
 	List<CommonData> categoryList = categoryQuery.list();

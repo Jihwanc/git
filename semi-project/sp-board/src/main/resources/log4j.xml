@@ -37,7 +37,7 @@
  
     <!-- root 로거 기본 설정 -->
     <root>  
-        <level value="ERROR"/>  
+        <level value="info"/>  
         <appender-ref ref="stdout"/>  
     </root>  
 </log4j:configuration>  

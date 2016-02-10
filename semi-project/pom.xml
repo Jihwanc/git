@@ -24,23 +24,23 @@
 		<org.springframework.version>4.2.4.RELEASE</org.springframework.version>
 		<org.springsecurity.version>4.0.3.RELEASE</org.springsecurity.version>
 		<org.hibernate.version>4.3.11.Final</org.hibernate.version>
-		
+
 		<org.slf4j.version>1.7.6</org.slf4j.version>
 		<org.log4j.version>1.2.17</org.log4j.version>
-		
+
 		<mysql.connector.version>5.1.38</mysql.connector.version>
 
 		<javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
 		<javax.servlet.jsp.jsp-api.version>2.2</javax.servlet.jsp.jsp-api.version>
 		<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
-		
+
 		<org.apache.tiles.version>3.0.4</org.apache.tiles.version>
 		<org.apache.tiles.request.version>1.0.4</org.apache.tiles.request.version>
-		
+
 		<org.freemarker.version>2.3.23</org.freemarker.version>
 
 		<junit.version>4.7</junit.version>
-		
+
 		<org.aspectj.version>1.8.8</org.aspectj.version>
 
 	</properties>
@@ -364,13 +364,14 @@
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 			<!-- AspectJ -->
 			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
 				<version>${org.aspectj.version}</version>
 			</dependency>
+
 			<!-- @Inject -->
 			<dependency>
 				<groupId>javax.inject</groupId>
@@ -378,6 +379,18 @@
 				<version>1</version>
 			</dependency>
 
+			<!-- commons file upload-->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.3.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.2</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -393,13 +406,8 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<encoding>UTF-8</encoding>
-					<!-- 
-					<excludes>
-						<exclude>src/main/resources/*</exclude>
-						<exclude>resources/*</exclude>
-						<exclude>**/*.*</exclude>
-					</excludes>
-					 -->
+					<!-- <excludes> <exclude>src/main/resources/*</exclude> <exclude>resources/*</exclude> 
+						<exclude>**/*.*</exclude> </excludes> -->
 				</configuration>
 			</plugin>
 		</plugins>

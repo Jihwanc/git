@@ -2,16 +2,14 @@ package com.mmventures.study.board.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mmventures.study.core.domain.BoardContent;
-import com.mmventures.study.core.domain.CommonData;
+import com.mmventures.study.core.domain.TableRelationInfo;
 
 /**
  * BoardContent dao.
@@ -46,36 +44,41 @@ public class BoardContentDao {
 
     public final List<BoardContent> selectBoardContentList(final int boardId) {
 	/*
-	List<BoardContent> list = sessionFactory.getCurrentSession()
-		.createCriteria(BoardContent.class)
-		.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+	 * List<BoardContent> list = sessionFactory.getCurrentSession()
+	 * .createCriteria(BoardContent.class)
+	 * .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	 */
+	Session session = sessionFactory.getCurrentSession();
 
-	Criteria criteria = sessionFactory.getCurrentSession()
-		.createCriteria(BoardContent.class);
+	Query selectQuery = session.createQuery("from BoardContent as content "
+		+ "where content.commonField.isDelete = false "
+		+ "order by content.commonField.createDate desc");
 	
-	criteria.setMaxResults(20);
-//	criteria.addOrder(Order.desc("createDate"));
-	criteria.addOrder(Order.desc("commonField.createDate"));
-	
-	List<BoardContent> list = criteria.list();
+	selectQuery.setMaxResults(100);
 
-	return list;
+	return (List<BoardContent>) selectQuery.list();
     }
-    
-    public final BoardContent selectBoardContent(final int boardId, final int contentId) {
+
+    public final BoardContent selectBoardContent(final int boardId,
+	    final int contentId) {
 	Session session = sessionFactory.getCurrentSession();
 
 	Query selectQuery = session
-		.createQuery(
-			"from BoardContent as content where content.id = :contentId")
+		.createQuery("from BoardContent as content "
+			+ "where content.id = :contentId "
+			+ "and content.commonField.isDelete = false")
 		.setParameter("contentId", contentId);
 
 	BoardContent content = (BoardContent) selectQuery.uniqueResult();
-	
+
 	return content;
     }
-    
+
+    public void insertContentFileMapping(TableRelationInfo relationInfo) {
+	Session session = sessionFactory.getCurrentSession();
+	session.save(relationInfo);
+    }
+
     
     
 
